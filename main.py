@@ -64,5 +64,5 @@ if submitted:
                 st.write("Wrong !")
                 st.write("The correct answer was ", data["result"][questions[i]])
                 st.write(data["explanation"][questions[i]])
-    st.write("Final score : ", score, " / ", n)
-    st.write("Accuracy percentage : ", round((score / n)*100, 3), " %")
+    st.sidebar.write("Final score : ", score, " / ", n)
+    st.sidebar.write("Accuracy percentage : ", round((score / n)*100, 3), " %")
