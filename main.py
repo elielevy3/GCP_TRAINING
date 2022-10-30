@@ -1,10 +1,10 @@
 import streamlit as st
 import pandas as pd
-from random import sample
+from random import sample, randint
 
 
 @st.cache()
-def get_sample_question(data, nb_of_questions):
+def get_sample_question(data, nb_of_questions, random_number=None):
     return sample(range(1, len(data)), nb_of_questions)
 
 
@@ -23,6 +23,13 @@ questions = get_sample_question(data, n)
 submitted_answers = []
 explanations = []
 
+
+# button to restart test
+if st.sidebar.button("Restart test ? "): 
+    questions = get_sample_question(data, n, randint(0, 100000))
+
+
+
 for i, question in enumerate(questions):
 
     # question number
@@ -35,7 +42,8 @@ for i, question in enumerate(questions):
     dico = {str(x) + " : " + str(data[x][question]): x for x in ['A', 'B', 'C', 'D', 'E'] if str(data[x][question]) != "nan"}
     options = [str(x) + " : " + str(data[x][question]) for x in ['A', 'B', 'C', 'D', 'E'] if str(data[x][question]) != "nan"]
     answer = st.radio('What is your answer ? ', options)
-    submitted_answers.append(dico[answer])
+    if answer is not None:
+        submitted_answers.append(dico[answer])
     explanation = st.empty()
     explanations.append(explanation)
     st.write("-----------------------------------")
