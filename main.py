@@ -1,13 +1,12 @@
 import streamlit as st
 import pandas as pd
-from random import sample, randint
+from random import sample
 
 st.set_page_config(page_title="WEWYSE GCP TRAINING")
 
-@st.cache()
-def get_sample_question(data, nb_of_questions, random_number=None):
+@st.experimental_memo
+def get_sample_question(data, nb_of_questions):
     return sample(range(1, len(data)), nb_of_questions)
-
 
 st.title("WELCOME TO WEWYSE GCP ACE TRAINING !")
 
@@ -19,16 +18,15 @@ n = st.number_input('How many questions do you want ?', step=1, min_value=1, max
 st.write('You asked for ', n, ' questions.')
 
 # get n questions
-questions = get_sample_question(data, n)
+questions = get_sample_question(data, nb_of_questions=n)
+
+# button to restart test
+if st.sidebar.button("Restart test ? "):
+    st.experimental_memo.clear()
+    st.experimental_rerun()
 
 submitted_answers = []
 explanations = []
-
-
-# button to restart test
-if st.sidebar.button("Restart test ? "): 
-    questions = get_sample_question(data, n, randint(0, 100000))
-
 
 
 for i, question in enumerate(questions):
