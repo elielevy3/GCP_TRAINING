@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 from random import sample, randint
 
+st.set_page_config(page_title="WEWYSE GCP TRAINING")
 
 @st.cache()
 def get_sample_question(data, nb_of_questions, random_number=None):
