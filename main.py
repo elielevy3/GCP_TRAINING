@@ -2,13 +2,13 @@ import streamlit as st
 import pandas as pd
 from random import sample
 
-st.set_page_config(page_title="WEWYSE GCP TRAINING")
+st.set_page_config(page_title="WEWYSE GCP TRAINING", page_icon="📚")
 
 @st.experimental_memo
 def get_sample_question(data, nb_of_questions):
     return sample(range(1, len(data)), nb_of_questions)
 
-st.title("WELCOME TO WEWYSE GCP ACE TRAINING !")
+st.markdown("# 📚 WELCOME TO WEWYSE GCP ACE TRAINING !")
 
 # get raw data
 data = pd.read_csv("Evaluation_test.csv", sep=";")
@@ -35,7 +35,7 @@ for i, question in enumerate(questions):
     st.write("Question ", i + 1, " / ", n)
 
     # writing the question
-    st.write(data["Question"][question], key=i)
+    st.write(data["Question"][question])
 
     # writing options
     dico = {str(x) + " : " + str(data[x][question]): x for x in ['A', 'B', 'C', 'D', 'E'] if str(data[x][question]) != "nan"}
