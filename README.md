@@ -5,7 +5,7 @@ Script Python pour les Quizz d'entrainement à la certification Associate Cloud 
 ## Pour le lancer sur sa machine: 
 
 ### Installer les librairies nécessaires
-`pip install streamlit`
+`pip install streamlit` ou pip3 install streamlit (https://docs.streamlit.io/library/get-started/installation)
 
 ### Fonctionnement 
 * Lancer le serveur: Dans le dossier principal: python3 -m streamlit run main.py ou streamlit run main.py
