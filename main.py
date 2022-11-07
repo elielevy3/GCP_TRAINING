@@ -47,7 +47,7 @@ for i, question in enumerate(questions):
     explanations.append(explanation)
     st.write("-----------------------------------")
 
-submitted = st.button(label="Submit answers")
+submitted = st.sidebar.button(label="Submit answers")
 
 
 if submitted:
