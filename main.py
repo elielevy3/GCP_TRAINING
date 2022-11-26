@@ -14,7 +14,7 @@ st.markdown("# 📚 WELCOME TO WEWYSE GCP ACE TRAINING !")
 data = pd.read_csv("Evaluation_test.csv", sep=";")
 
 # ask the user how many questions he wants
-n = st.number_input('How many questions do you want ?', step=1, min_value=1, max_value=len(data))
+n = st.number_input('How many questions do you want ?', step=1, min_value=1, max_value=len(data)-1)
 st.write('You asked for ', n, ' questions.')
 
 # get n questions
